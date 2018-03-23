@@ -23,7 +23,7 @@ Red - A destroyer
 Cyan/Orange - A delayer  
 Gray - A turner  
 Blue/green - Bits of data (0 and 1 respectively)  
-Purple - A splitter
+Purple - A splitter  
 Yellow - A stopper
 ### Building
 If you wish to build Qualums, you will need to install:
