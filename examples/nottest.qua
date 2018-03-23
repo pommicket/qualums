@@ -1,0 +1,26 @@
+x   y   speedX  speedY  color
+20  16  0       1       GE
+20  20  0       0       PU
+20  10  0       0       GA
+30  10  0       0       GA
+30  20  0       0       GA
+10  20  0       0       GA
+10  30  0       0       GA
+# ---- BLUE GENERATOR ----
+230 26  0       1       BL
+230 30  0       0       PU
+230 20  0       0       GA
+240 20  0       0       GA
+240 30  0       0       GA
+# ---- DOWNIFIER ---- (takes qualums from both sides, makes them go downwards)
+120 30  0       0       PU
+120 28  0       0       RE
+# ---- NOT ----
+120 120 0       0       !examples/not.qua
+#120 120 0       0       PU
+#118 120 0       0       GA
+#123 120 0       0       YE
+#118 122 0       0       GA
+#124 122 0       0       GA
+#124 118 0       0       GA
+#122 118 0       0       GA

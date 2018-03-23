@@ -1,0 +1,87 @@
+x   y   speedX  speedY  color
+# Bring the third digit down slowly...
+2   0   0       0       GA
+6   0   0       0       PU
+6   -1  0       0       RE
+6   1   0       0       CY
+6   2   0       0       CY
+6   3   0       0       CY
+6   4   0       0       CY
+6   5   0       0       CY
+6   6   0       0       CY
+6   7   0       0       CY
+6   8   0       0       CY
+6   9   0       0       CY
+6   10  0       0       CY
+6   11  0       0       CY
+6   12  0       0       CY
+6   13  0       0       CY
+6   14  0       0       CY
+6   15  0       0       CY
+6   16  0       0       CY
+6   17  0       0       CY
+6   18  0       0       CY
+6   19  0       0       CY
+6   20  0       0       CY
+6   21  0       0       CY
+6   22  0       0       CY
+6   23  0       0       CY
+6   24  0       0       CY
+6   25  0       0       CY
+6   26  0       0       CY
+6   27  0       0       CY
+6   28  0       0       CY
+6   29  0       0       CY
+6   30  0       0       CY
+6   34  0       0       GA
+16  34  0       0       GA
+16  32  0       0       GA
+0   32  0       0       GA
+# Bring the carry of the first addition to the OR
+-2  33  0       0       CY
+-2  34  0       0       CY
+-2  35  0       0       GA
+10  35  0       0       GA
+10  25  0       0       GA
+9   25  0       0       GA
+9   71  0       0       GA
+10  71  0       0       GA
+10  70  0       0       GA
+-2  70  0       0       GA
+9   70  0       0       CY
+9   69  0       0       CY
+9   68  0       0       CY
+9   67  0       0       CY
+9   66  0       0       CY
+9   65  0       0       CY
+9   64  0       0       CY
+9   63  0       0       CY
+9   62  0       0       CY
+9   61  0       0       CY
+9   60  0       0       CY
+9   59  0       0       CY
+9   58  0       0       CY
+# While the first 2 digits are adding
+0   5   0       0       !examples/half.qua
+# Add the third digit with the sum of the first 2
+-1  41  0       0       !examples/half.qua # Outputs to -2/-3, 67
+# Bring sum of second addition to answer
+-2  68  0       0       GA
+7   68  0       0       GA
+7   67  0       0       GA
+6   67  0       0       GA
+6   75  0       0       CY
+6   78  0       0       GA
+7   78  0       0       GA
+7   77  0       0       GA
+4   77  0       0       GA
+# OR carries
+-3  72  0       0       !examples/or.qua
+
+# FULL-ADDER
+# Inputs:  0, 0
+#          1, 0
+#          2, 0
+# Outputs: 3, 77
+#          4, 77
+# Time:    224

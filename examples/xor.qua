@@ -1,0 +1,31 @@
+x   y   speedX  speedY  color
+# Re-route inputs
+1   0   0       0       GA
+0   1   0       0       GA
+1   1   0       0       GA
+# 2 duplicators create copies of 2 bits
+-1  0   0       0       PU
+2   0   0       0       PU
+# What is done with the bottom copy (NAND)
+-1  2   0       0       GA
+2   3   0       0       YE
+8   2   0       0       GA
+8   1   0       0       GA
+6   1   0       0       GA
+6   11  0       0       GA
+8   11  0       0       GA
+8   10  0       0       GA
+4   10  0       0       GA
+# What is done with the top copy    (OR)
+-1  -1  0       0       GA
+2   -2  0       0       GA
+-2  -1  0       0       GA
+-3  -2  0       0       GA
+-3   5  0       0       !examples/or.qua
+# The combining (AND)
+3    12 0       0       !examples/and.qua
+# A XOR B = (A OR B) AND (A NAND B)
+# Inputs: 0, 0
+#         1, 0
+# Output: 6, 12
+# Time:   54

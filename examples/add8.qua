@@ -1,0 +1,605 @@
+x   y   speedX  speedY  color
+## Re-route inputs
+# Bring down
+-16 -17 0       0       PU
+-15 -16 0       0       PU
+-14 -15 0       0       PU
+-13 -14 0       0       PU
+-12 -13 0       0       PU
+-11 -12 0       0       PU
+-10 -11 0       0       PU
+-9  -10 0       0       PU
+-7  -8  0       0       PU
+-6  -7  0       0       PU
+-5  -6  0       0       PU
+-4  -5  0       0       PU
+-3  -4  0       0       PU
+-2  -3  0       0       PU
+-1  -2  0       0       PU
+0   -1  0       0       PU
+
+-16 -18 0       0       RE
+-15 -17 0       0       RE
+-14 -16 0       0       RE
+-13 -15 0       0       RE
+-12 -14 0       0       RE
+-11 -13 0       0       RE
+-10 -12 0       0       RE
+-9  -11 0       0       RE
+-7  -9  0       0       RE
+-6  -8  0       0       RE
+-5  -7  0       0       RE
+-4  -6  0       0       RE
+-3  -5  0       0       RE
+-2  -4  0       0       RE
+-1  -3  0       0       RE
+0   -2  0       0       RE
+# Digit x (starting at 0) of A is on column -x
+# Digit x of B is on column -x-9
+## First pair
+0   20  0       0       GA
+1   20  0       0       CY
+2   20  0       0       CY
+3   20  0       0       CY
+4   20  0       0       CY
+5   20  0       0       CY
+6   20  0       0       CY
+7   20  0       0       CY
+8   20  0       0       CY
+9   20  0       0       CY
+-9  21  0       0       GA
+
+20  20  0       0       GA
+21  21  0       0       GA
+
+20  3   0       0       GA
+21  4   0       0       GA
+
+19  3   0       0       GA
+18  4   0       0       GA
+
+19  5   0       0       GA
+18  6   0       0       GA
+
+38  5   0       0       GA
+37  6   0       0       GA
+
+38  3   0       0       GA
+37  4   0       0       GA
+
+35  3   0       0       GA
+36  4   0       0       GA
+35  4   0       0       CY
+
+
+35  17  0       0       !examples/half.qua # Outputs to 33/34, 43
+# Redirect last digit of answer
+34  44  0       0       GA
+40  44  0       0       GA
+40  -3  0       0       PU
+39  -3  0       0       RE
+## Delay rest of bits while first pair is adding
+0   0   0       0       !examples/add8rect1.qua
+## Second pair
+# Redirect carry in
+33  45  0       0       GA
+46  45  0       0       GA
+46  5   0       0       GA
+45  5   0       0       GA
+45  6   0       0       GA
+46  6   0       0       CY
+47  6   0       0       CY
+48  6   0       0       CY
+49  6   0       0       CY
+50  6   0       0       CY
+51  6   0       0       CY
+52  6   0       0       CY
+53  6   0       0       CY
+54  6   0       0       CY
+55  6   0       0       CY
+56  6   0       0       CY
+57  6   0       0       CY
+58  6   0       0       CY
+59  6   0       0       CY
+60  6   0       0       PU
+60  5   0       0       RE
+60  7   0       0       OR
+# Redirect 2 digits
+-1  50  0       0       GA 
+-10 51  0       0       GA
+42  50  0       0       GA
+44  51  0       0       GA
+44  3   0       0       PU
+43  3   0       0       RE
+42  1   0       0       PU
+41  1   0       0       RE
+43  1   0       0       CY
+44  1   0       0       CY
+45  1   0       0       CY
+46  1   0       0       CY
+47  1   0       0       CY
+48  1   0       0       CY
+61  3   0       0       PU
+61  2   0       0       RE
+62  1   0       0       PU
+62  0   0       0       RE
+# Add
+60  10  0       0       !examples/full.qua # Outputs to 63/64, 87
+# Redirect sum
+64  90  0       0       GA
+77  90  0       0       GA
+77  -4  0       0       PU
+76  -4  0       0       RE
+## Delay other bits while second pair is adding
+0   8  0       0       !examples/add8rect2.qua
+## Third pair
+# Redirect carry in
+63  91  0       0       GA
+79  91  0       0       GA
+79  1   0       0       PU
+78  1   0       0       RE
+97  1   0       0       PU
+97  0   0       0       RE
+# Redirect 2 bits
+-2  92  0       0       GA
+-11 93  0       0       GA
+80  92  0       0       GA
+81  93  0       0       GA
+80  0   0       0       PU
+79  0   0       0       RE
+81  -1  0       0       PU
+80  -1  0       0       RE
+95  -1  0       0       PU
+95  -2  0       0       RE
+96  0   0       0       PU
+96  -1  0       0       RE
+# Delay bits
+81  92  0       0       CY
+81  91  0       0       CY
+81  90  0       0       CY
+81  89  0       0       CY 
+81  88  0       0       CY 
+81  87  0       0       CY 
+81  86  0       0       CY 
+81  85  0       0       CY 
+81  84  0       0       CY
+
+80  91  0       0       OR
+96  8   0       0       CY
+96  7   0       0       CY
+96  6   0       0       CY
+96  5   0       0       CY
+96  4   0       0       CY
+96  3   0       0       CY
+95  8   0       0       CY
+# Add
+95  10  0       0       !examples/full.qua # Outputs to 98/99, 87
+# Redirect sum
+99  90  0       0       GA
+112 90  0       0       GA
+112 -5  0       0       PU
+111 -5  0       0       RE
+## Fourth pair
+# Redirect carry in
+98  91  0       0       GA
+114 91  0       0       GA
+114 1   0       0       PU
+113 1   0       0       RE
+132 1   0       0       PU
+132 0   0       0       RE
+# Delay while last bits are adding
+0   24  0       0       !examples/add8rect3.qua
+# Redirect bits
+-3  94  0       0       GA
+-12 95  0       0       GA
+115 94  0       0       GA
+116 95  0       0       GA
+115 0   0       0       PU
+114 0   0       0       RE
+116 -1  0       0       PU
+115 -1  0       0       RE
+130 -1  0       0       PU
+130 -2  0       0       RE
+131 0   0       0       PU
+131 -1  0       0       RE
+# Delay bits
+115 93  0       0       OR
+115 92  0       0       CY
+115 91  0       0       CY
+115 90  0       0       CY
+115 89  0       0       CY
+115 88  0       0       CY
+115 87  0       0       CY
+115 86  0       0       CY
+
+116 92  0       0       CY
+116 91  0       0       CY
+116 90  0       0       CY
+116 89  0       0       CY
+116 88  0       0       CY
+116 87  0       0       CY
+116 86  0       0       CY
+116 85  0       0       CY
+116 84  0       0       CY
+116 83  0       0       CY
+116 82  0       0       CY
+# Add
+130 10  0       0       !examples/full.qua # Outputs to 133/134, 87
+# Redirect sum
+134 90  0       0       GA
+147 90  0       0       GA
+147 -6  0       0       PU
+146 -6  0       0       RE
+## Fifth pair
+# Redirect carry in
+133 91  0       0       GA
+149 91  0       0       GA
+149 1   0       0       PU
+148 1   0       0       RE
+167 1   0       0       PU
+167 0   0       0       RE
+# Delay while last bits are adding
+0   44  0       0       !examples/add8rect4.qua
+# Redirect bits
+-4  96  0       0       GA
+-13 97  0       0       GA
+150 96  0       0       GA
+151 97  0       0       GA
+150 0   0       0       PU
+149 0   0       0       RE
+151 -1  0       0       PU
+150 -1  0       0       RE
+165 -1  0       0       PU
+165 -2  0       0       RE
+166 0   0       0       PU
+166 -1  0       0       RE
+# Delay bits
+150 93  0       0       OR
+150 92  0       0       CY
+150 91  0       0       CY
+150 90  0       0       CY
+150 89  0       0       CY
+150 88  0       0       CY
+150 87  0       0       CY
+150 86  0       0       CY
+150 85  0       0       CY
+
+151 92  0       0       CY
+151 91  0       0       CY
+151 90  0       0       CY
+151 89  0       0       CY
+151 88  0       0       CY
+151 87  0       0       CY
+151 86  0       0       CY
+151 85  0       0       CY
+151 84  0       0       CY
+151 83  0       0       CY
+151 82  0       0       CY
+151 81  0       0       CY
+# Add
+165 10  0       0       !examples/full.qua # Outputs to 168/169, 87
+# Redirect sum
+169 90  0       0       GA
+182 90  0       0       GA
+182 -7  0       0       PU
+181 -7  0       0       RE
+
+
+## Sixth pair
+# Redirect carry in
+168 91  0       0       GA
+184 91  0       0       GA
+184 1   0       0       PU
+183 1   0       0       RE
+202 1   0       0       PU
+202 0   0       0       RE
+# Delay while last bits are adding
+0   66  0       0       !examples/add8rect5.qua
+# Redirect bits
+-5  98  0       0       GA
+-14 99  0       0       GA
+185 98  0       0       GA
+186 99  0       0       GA
+185 0   0       0       PU
+184 0   0       0       RE
+186 -1  0       0       PU
+185 -1  0       0       RE
+200 -1  0       0       PU
+200 -2  0       0       RE
+201 0   0       0       PU
+201 -1  0       0       RE
+# Delay bits
+185 93  0       0       OR
+185 92  0       0       CY
+185 91  0       0       CY
+185 90  0       0       CY
+185 89  0       0       CY
+185 88  0       0       CY
+185 87  0       0       CY
+185 86  0       0       CY
+185 85  0       0       CY
+185 84  0       0       CY
+
+186 92  0       0       CY
+186 91  0       0       CY
+186 90  0       0       CY
+186 89  0       0       CY
+186 88  0       0       CY
+186 87  0       0       CY
+186 86  0       0       CY
+186 85  0       0       CY
+186 84  0       0       CY
+186 83  0       0       CY
+186 82  0       0       CY
+186 81  0       0       CY
+186 80  0       0       CY
+# Add
+200 10  0       0       !examples/full.qua # Outputs to 203/204, 87
+# Redirect sum
+204 90  0       0       GA
+217 90  0       0       GA
+217 -8  0       0       PU
+216 -8  0       0       RE
+
+
+## Seventh pair
+# Redirect carry in
+203 91  0       0       GA
+219 91  0       0       GA
+219 1   0       0       PU
+218 1   0       0       RE
+237 1   0       0       PU
+237 0   0       0       RE
+# Delay while last bits are adding
+-5  100 0       0       !examples/add8rect6.qua
+# Redirect bits
+-6  100 0       0       GA
+-15 101 0       0       GA
+220 100 0       0       GA
+221 101 0       0       GA
+220 0   0       0       PU
+219 0   0       0       RE
+221 -1  0       0       PU
+220 -1  0       0       RE
+235 -1  0       0       PU
+235 -2  0       0       RE
+236 0   0       0       PU
+236 -1  0       0       RE
+# Delay bits
+220 93  0       0       OR
+220 92  0       0       CY
+220 91  0       0       CY
+220 90  0       0       CY
+220 89  0       0       CY
+220 88  0       0       CY
+220 87  0       0       CY
+220 86  0       0       CY
+220 85  0       0       CY
+220 84  0       0       CY
+220 83  0       0       CY
+
+221 92  0       0       CY
+221 91  0       0       CY
+221 90  0       0       CY
+221 89  0       0       CY
+221 88  0       0       CY
+221 87  0       0       CY
+221 86  0       0       CY
+221 85  0       0       CY
+221 84  0       0       CY
+221 83  0       0       CY
+221 82  0       0       CY
+221 81  0       0       CY
+221 80  0       0       CY
+221 79  0       0       CY
+# Add
+235 10  0       0       !examples/full.qua # Outputs to 238/239, 87
+# Redirect sum
+239 90  0       0       GA
+252 90  0       0       GA
+252 -9  0       0       PU
+251 -9  0       0       RE
+
+## Eighth pair
+# Redirect carry in
+238 91  0       0       GA
+254 91  0       0       GA
+254 1   0       0       PU
+253 1   0       0       RE
+272 1   0       0       PU
+272 0   0       0       RE
+# Delay while last bits are adding
+15  100 0       0       !examples/add8rect7.qua
+# Redirect bits
+-7  102 0       0       GA
+-16 103 0       0       GA
+255 102 0       0       GA
+256 103 0       0       GA
+255 0   0       0       PU
+254 0   0       0       RE
+256 -1  0       0       PU
+255 -1  0       0       RE
+270 -1  0       0       PU
+270 -2  0       0       RE
+271 0   0       0       PU
+271 -1  0       0       RE
+# Delay bits
+255 93  0       0       OR
+255 92  0       0       CY
+255 91  0       0       CY
+255 90  0       0       CY
+255 89  0       0       CY
+255 88  0       0       CY
+255 87  0       0       CY
+255 86  0       0       CY
+255 85  0       0       CY
+255 84  0       0       CY
+255 83  0       0       CY
+255 82  0       0       CY
+
+256 92  0       0       CY
+256 91  0       0       CY
+256 90  0       0       CY
+256 89  0       0       CY
+256 88  0       0       CY
+256 87  0       0       CY
+256 86  0       0       CY
+256 85  0       0       CY
+256 84  0       0       CY
+256 83  0       0       CY
+256 82  0       0       CY
+256 81  0       0       CY
+256 80  0       0       CY
+256 79  0       0       CY
+256 78  0       0       CY
+# Add
+270 10  0       0       !examples/full.qua # Outputs to 273/274, 87
+
+# Redirect sum & carry
+274 90  0       0       GA
+287 90  0       0       GA
+273 91  0       0       GA
+288 91  0       0       GA
+288 90  0       0       CY
+288 89  0       0       CY
+288 88  0       0       CY
+288 87  0       0       CY
+
+
+287 -10 0       0       PU
+286 -10 0       0       RE
+288 -11 0       0       PU
+287 -11 0       0       RE
+
+## Delay outputs
+253 -9  0       0       !examples/20row.qua
+253 -8  0       0       !examples/20row.qua
+253 -7  0       0       !examples/20row.qua
+253 -6  0       0       !examples/20row.qua
+253 -5  0       0       !examples/20row.qua
+253 -4  0       0       !examples/20row.qua
+253 -3  0       0       !examples/20row.qua
+273 -3  0       0       OR
+274 -3  0       0       OR
+273 -4  0       0       OR
+
+289 -8  0       0       OR
+289 -7  0       0       OR
+289 -6  0       0       OR
+289 -5  0       0       OR
+289 -4  0       0       OR
+289 -3  0       0       OR
+289 -9  0       0       CY
+290 -9  0       0       CY
+291 -9  0       0       CY
+292 -9  0       0       CY
+293 -9  0       0       CY
+294 -9  0       0       CY
+295 -9  0       0       CY
+296 -9  0       0       CY
+297 -9  0       0       CY
+298 -9  0       0       CY
+299 -9  0       0       CY
+300 -9  0       0       CY
+301 -9  0       0       CY
+302 -9  0       0       CY
+303 -9  0       0       CY
+
+295 -10 0       0       CY
+296 -10 0       0       CY
+297 -10 0       0       CY
+298 -10 0       0       CY
+299 -10 0       0       CY
+300 -10 0       0       CY
+301 -10 0       0       CY
+302 -10 0       0       CY
+
+295 -4  0       0       CY
+296 -4  0       0       CY
+
+295 -6  0       0       CY
+296 -6  0       0       CY
+297 -6  0       0       CY
+298 -6  0       0       CY
+
+292 -5  0       0       CY
+293 -5  0       0       CY
+294 -5  0       0       CY
+295 -5  0       0       CY
+296 -5  0       0       CY
+297 -5  0       0       CY
+298 -5  0       0       CY
+299 -5  0       0       CY
+300 -5  0       0       CY
+301 -5  0       0       CY
+302 -5  0       0       CY
+
+291 -7  0       0       CY
+292 -7  0       0       CY
+293 -7  0       0       CY
+294 -7  0       0       CY
+295 -7  0       0       CY
+296 -7  0       0       CY
+297 -7  0       0       CY
+298 -7  0       0       CY
+299 -7  0       0       CY
+300 -7  0       0       CY
+301 -7  0       0       CY
+302 -7  0       0       CY
+303 -7  0       0       CY
+
+295 -8 0       0       CY
+296 -8 0       0       CY
+297 -8 0       0       CY
+298 -8 0       0       CY
+299 -8 0       0       CY
+300 -8 0       0       CY
+
+
+290 -6  0       0       OR
+290 -5  0       0       OR
+290 -4  0       0       OR
+290 -3  0       0       OR
+291 -3  0       0       OR
+
+218 -8  0       0       !examples/20row.qua
+218 -7  0       0       !examples/20row.qua
+218 -6  0       0       !examples/20row.qua
+218 -5  0       0       !examples/20row.qua
+218 -4  0       0       !examples/20row.qua
+218 -3  0       0       !examples/20row.qua
+
+183 -7  0       0       !examples/20row.qua
+183 -6  0       0       !examples/20row.qua
+183 -5  0       0       !examples/20row.qua
+183 -4  0       0       !examples/20row.qua
+183 -3  0       0       !examples/20row.qua
+
+148 -6  0       0       !examples/20row.qua
+148 -5  0       0       !examples/20row.qua
+148 -4  0       0       !examples/20row.qua
+148 -3  0       0       !examples/20row.qua
+
+113 -5  0       0       !examples/20row.qua
+113 -4  0       0       !examples/20row.qua
+113 -3  0       0       !examples/20row.qua
+
+78  -4  0       0       !examples/20row.qua
+78  -3  0       0       !examples/20row.qua
+
+43  -3  0       0       !examples/20row.qua
+
+# ADD-8
+# Inputs:  -17, -16
+#          -17, -15 
+#          ...
+#          -17, -10
+#          -17, -8
+#          -17, -7
+#          ...
+#          -17, -1
+# Outputs: 303, -10
+#          303, -9
+#          ...
+#          303, -3
+# Time:    2852
