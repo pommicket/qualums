@@ -84,4 +84,3 @@ x   y   speedX  speedY  color
 # Since speedX = 1, the wall will be moving to the right.
 41  20   0       1       GE # This qualum will move downwards and collide with the wall
 ```
-At the moment, all relative includes are relative to the folder the executable is in, not the  folder the .qua file is in. This problem should be fixed reasonably soon, but for the moment, you can only use paths relative to the executable or absolute paths.
