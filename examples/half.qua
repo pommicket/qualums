@@ -15,7 +15,7 @@ x   y   speedX  speedY  color
 4   -2  0       0       GA
 -3  -1  0       0       GA
 -4  -2  0       0       GA
--4  3   0       0       !examples/xor.qua # Outputs to 2, 15
+-4  3   0       0       !xor.qua # Outputs to 2, 15
 # What happens to the top copy (AND)
 -1  -3  0       0       GA
 2   -4  0       0       GA
@@ -23,7 +23,7 @@ x   y   speedX  speedY  color
 -10 -4  0       0       GA
 -9  -2  0       0       CY
 -9  -1  0       0       CY
--10 15  0       0       !examples/and.qua # Outputs to -10, 18
+-10 15  0       0       !and.qua # Outputs to -10, 18
 -10 22  0       0       GA
 -5  22  0       0       PU
 -5  21  0       0       RE

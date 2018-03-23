@@ -72,14 +72,14 @@ x   y   speedX  speedY  color
 35  4   0       0       CY
 
 
-35  17  0       0       !examples/half.qua # Outputs to 33/34, 43
+35  17  0       0       !half.qua # Outputs to 33/34, 43
 # Redirect last digit of answer
 34  44  0       0       GA
 40  44  0       0       GA
 40  -3  0       0       PU
 39  -3  0       0       RE
 ## Delay rest of bits while first pair is adding
-0   0   0       0       !examples/add8rect1.qua
+0   0   0       0       !add8rect1.qua
 ## Second pair
 # Redirect carry in
 33  45  0       0       GA
@@ -124,14 +124,14 @@ x   y   speedX  speedY  color
 62  1   0       0       PU
 62  0   0       0       RE
 # Add
-60  10  0       0       !examples/full.qua # Outputs to 63/64, 87
+60  10  0       0       !full.qua # Outputs to 63/64, 87
 # Redirect sum
 64  90  0       0       GA
 77  90  0       0       GA
 77  -4  0       0       PU
 76  -4  0       0       RE
 ## Delay other bits while second pair is adding
-0   8  0       0       !examples/add8rect2.qua
+0   8  0       0       !add8rect2.qua
 ## Third pair
 # Redirect carry in
 63  91  0       0       GA
@@ -173,7 +173,7 @@ x   y   speedX  speedY  color
 96  3   0       0       CY
 95  8   0       0       CY
 # Add
-95  10  0       0       !examples/full.qua # Outputs to 98/99, 87
+95  10  0       0       !full.qua # Outputs to 98/99, 87
 # Redirect sum
 99  90  0       0       GA
 112 90  0       0       GA
@@ -188,7 +188,7 @@ x   y   speedX  speedY  color
 132 1   0       0       PU
 132 0   0       0       RE
 # Delay while last bits are adding
-0   24  0       0       !examples/add8rect3.qua
+0   24  0       0       !add8rect3.qua
 # Redirect bits
 -3  94  0       0       GA
 -12 95  0       0       GA
@@ -224,7 +224,7 @@ x   y   speedX  speedY  color
 116 83  0       0       CY
 116 82  0       0       CY
 # Add
-130 10  0       0       !examples/full.qua # Outputs to 133/134, 87
+130 10  0       0       !full.qua # Outputs to 133/134, 87
 # Redirect sum
 134 90  0       0       GA
 147 90  0       0       GA
@@ -239,7 +239,7 @@ x   y   speedX  speedY  color
 167 1   0       0       PU
 167 0   0       0       RE
 # Delay while last bits are adding
-0   44  0       0       !examples/add8rect4.qua
+0   44  0       0       !add8rect4.qua
 # Redirect bits
 -4  96  0       0       GA
 -13 97  0       0       GA
@@ -277,7 +277,7 @@ x   y   speedX  speedY  color
 151 82  0       0       CY
 151 81  0       0       CY
 # Add
-165 10  0       0       !examples/full.qua # Outputs to 168/169, 87
+165 10  0       0       !full.qua # Outputs to 168/169, 87
 # Redirect sum
 169 90  0       0       GA
 182 90  0       0       GA
@@ -294,7 +294,7 @@ x   y   speedX  speedY  color
 202 1   0       0       PU
 202 0   0       0       RE
 # Delay while last bits are adding
-0   66  0       0       !examples/add8rect5.qua
+0   66  0       0       !add8rect5.qua
 # Redirect bits
 -5  98  0       0       GA
 -14 99  0       0       GA
@@ -334,7 +334,7 @@ x   y   speedX  speedY  color
 186 81  0       0       CY
 186 80  0       0       CY
 # Add
-200 10  0       0       !examples/full.qua # Outputs to 203/204, 87
+200 10  0       0       !full.qua # Outputs to 203/204, 87
 # Redirect sum
 204 90  0       0       GA
 217 90  0       0       GA
@@ -351,7 +351,7 @@ x   y   speedX  speedY  color
 237 1   0       0       PU
 237 0   0       0       RE
 # Delay while last bits are adding
--5  100 0       0       !examples/add8rect6.qua
+-5  100 0       0       !add8rect6.qua
 # Redirect bits
 -6  100 0       0       GA
 -15 101 0       0       GA
@@ -393,7 +393,7 @@ x   y   speedX  speedY  color
 221 80  0       0       CY
 221 79  0       0       CY
 # Add
-235 10  0       0       !examples/full.qua # Outputs to 238/239, 87
+235 10  0       0       !full.qua # Outputs to 238/239, 87
 # Redirect sum
 239 90  0       0       GA
 252 90  0       0       GA
@@ -409,7 +409,7 @@ x   y   speedX  speedY  color
 272 1   0       0       PU
 272 0   0       0       RE
 # Delay while last bits are adding
-15  100 0       0       !examples/add8rect7.qua
+15  100 0       0       !add8rect7.qua
 # Redirect bits
 -7  102 0       0       GA
 -16 103 0       0       GA
@@ -453,7 +453,7 @@ x   y   speedX  speedY  color
 256 79  0       0       CY
 256 78  0       0       CY
 # Add
-270 10  0       0       !examples/full.qua # Outputs to 273/274, 87
+270 10  0       0       !full.qua # Outputs to 273/274, 87
 
 # Redirect sum & carry
 274 90  0       0       GA
@@ -472,13 +472,13 @@ x   y   speedX  speedY  color
 287 -11 0       0       RE
 
 ## Delay outputs
-253 -9  0       0       !examples/20row.qua
-253 -8  0       0       !examples/20row.qua
-253 -7  0       0       !examples/20row.qua
-253 -6  0       0       !examples/20row.qua
-253 -5  0       0       !examples/20row.qua
-253 -4  0       0       !examples/20row.qua
-253 -3  0       0       !examples/20row.qua
+253 -9  0       0       !20row.qua
+253 -8  0       0       !20row.qua
+253 -7  0       0       !20row.qua
+253 -6  0       0       !20row.qua
+253 -5  0       0       !20row.qua
+253 -4  0       0       !20row.qua
+253 -3  0       0       !20row.qua
 273 -3  0       0       OR
 274 -3  0       0       OR
 273 -4  0       0       OR
@@ -562,32 +562,32 @@ x   y   speedX  speedY  color
 290 -3  0       0       OR
 291 -3  0       0       OR
 
-218 -8  0       0       !examples/20row.qua
-218 -7  0       0       !examples/20row.qua
-218 -6  0       0       !examples/20row.qua
-218 -5  0       0       !examples/20row.qua
-218 -4  0       0       !examples/20row.qua
-218 -3  0       0       !examples/20row.qua
+218 -8  0       0       !20row.qua
+218 -7  0       0       !20row.qua
+218 -6  0       0       !20row.qua
+218 -5  0       0       !20row.qua
+218 -4  0       0       !20row.qua
+218 -3  0       0       !20row.qua
 
-183 -7  0       0       !examples/20row.qua
-183 -6  0       0       !examples/20row.qua
-183 -5  0       0       !examples/20row.qua
-183 -4  0       0       !examples/20row.qua
-183 -3  0       0       !examples/20row.qua
+183 -7  0       0       !20row.qua
+183 -6  0       0       !20row.qua
+183 -5  0       0       !20row.qua
+183 -4  0       0       !20row.qua
+183 -3  0       0       !20row.qua
 
-148 -6  0       0       !examples/20row.qua
-148 -5  0       0       !examples/20row.qua
-148 -4  0       0       !examples/20row.qua
-148 -3  0       0       !examples/20row.qua
+148 -6  0       0       !20row.qua
+148 -5  0       0       !20row.qua
+148 -4  0       0       !20row.qua
+148 -3  0       0       !20row.qua
 
-113 -5  0       0       !examples/20row.qua
-113 -4  0       0       !examples/20row.qua
-113 -3  0       0       !examples/20row.qua
+113 -5  0       0       !20row.qua
+113 -4  0       0       !20row.qua
+113 -3  0       0       !20row.qua
 
-78  -4  0       0       !examples/20row.qua
-78  -3  0       0       !examples/20row.qua
+78  -4  0       0       !20row.qua
+78  -3  0       0       !20row.qua
 
-43  -3  0       0       !examples/20row.qua
+43  -3  0       0       !20row.qua
 
 # ADD-8
 # Inputs:  -17, -16

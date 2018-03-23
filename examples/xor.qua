@@ -21,9 +21,9 @@ x   y   speedX  speedY  color
 2   -2  0       0       GA
 -2  -1  0       0       GA
 -3  -2  0       0       GA
--3   5  0       0       !examples/or.qua
+-3   5  0       0       !or.qua
 # The combining (AND)
-3    12 0       0       !examples/and.qua
+3    12 0       0       !and.qua
 # A XOR B = (A OR B) AND (A NAND B)
 # Inputs: 0, 0
 #         1, 0

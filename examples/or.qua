@@ -1,10 +1,10 @@
 x   y   speedX  speedY  color
-0    2   0       0       !examples/not.qua
+0    2   0       0       !not.qua
 1    0   0       0       GA
 6    0   0       0       GA
 6    -1  0       0       GA
 5    -1  0       0       GA
-5    2   0       0       !examples/not.qua
+5    2   0       0       !not.qua
 1    4   0       0       GA
 7    4   0       0       YE
 # OR

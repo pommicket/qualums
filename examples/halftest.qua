@@ -1,16 +1,16 @@
 x   y   speedX  speedY  color
 100 50  0       1       GE
 101 50  0       1       GE
-100 100 0       0       !examples/half.qua
+100 100 0       0       !half.qua
 130 50  0       1       GE
 131 50  0       1       BL
-130 100 0       0       !examples/half.qua
+130 100 0       0       !half.qua
 160 50  0       1       BL
 161 50  0       1       GE
-160 100 0       0       !examples/half.qua
+160 100 0       0       !half.qua
 190 50  0       1       BL
 191 50  0       1       BL
-190 100 0       0       !examples/half.qua
+190 100 0       0       !half.qua
 
 
 

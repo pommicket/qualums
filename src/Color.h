@@ -11,7 +11,7 @@ public:
 private:
     static unsigned get_color(Color c);
     static unsigned colors[];
-    static char*    color_names[];
+    static const char* color_names[];
 };
 
 #endif /* COLOR_H */

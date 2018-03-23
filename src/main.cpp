@@ -6,6 +6,12 @@
 #include "Rendering.h"
 #include "Color.h"
 
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+const char SLASH = '\\';
+#else
+const char SLASH = '/';
+#endif
+
 SDL_Window* window;
 
 float TIME_SCALE = 4.0f;
@@ -16,39 +22,75 @@ void quit()
     SDL_Quit();
 }
 
-void read_file(char* filename, int x, int y, int speedx, int speedy)
+char* empty_string()
+{
+    // To avoid write-string warnings
+    char* s = (char*)malloc(1);
+    *s = 0;
+    return s;
+}
+
+char* getdirname(char* filename)
+{
+    // Gets, e.g. a/b/ from a/b/c.txt
+    char* dir = (char*)malloc(strlen(filename)+1);
+    strcpy(dir, filename);
+    char* lastSlash = strrchr(dir, SLASH);
+    if (lastSlash)
+        *(lastSlash+1) = 0;
+    else
+        return empty_string();
+    return dir;
+}
+
+char* getfilename(char* path)
+{
+    char* filename = (char*)malloc(strlen(path)+1);
+    strcpy(filename, path);
+    char* lastSlash = strrchr(path, SLASH);
+    if (lastSlash)
+        return lastSlash + 1;
+    return filename;
+}
+
+void read_file(char* directory, char* filename, int x, int y, int speedx, int speedy)
 {
     // Create the qualums from the given file
     // Increasing their positions by (x,y) and their speeds by (speedx, speedy)
-    FILE* input_file = fopen(filename, "r"); // Skip first line
+    char* path = (char*)malloc(4096); // Full path to file
+    sprintf(path, "%s%s", directory, filename);
+    
+    FILE* input_file = fopen(path, "r"); // Skip first line
     if (!input_file)
     {    
-        fprintf(stderr, "File not found: %s\n", filename);
+        fprintf(stderr, "File not found: %s\n", path);
         exit(1);
     }
     char* buffer = (char*)malloc(4096);
-    fgets(buffer, 4096, input_file);
+    fgets(buffer, 4096, input_file); // Skip first line
     
     int xrel, yrel, speedxrel, speedyrel; // Read input file
     char* color_str = (char*) malloc(4096);
-    char* include_filename = (char*) malloc(4096); // File name for includes
     
     while (fgets(buffer, 4096, input_file))
     {
-        int i;
-        for (i = 0; i < strlen(buffer); i++)
-            if (buffer[i] == '#')
-                break;
-        buffer[i] = 0;
+        buffer += strspn(buffer, " \t"); // Remove whitespace at start
+        if (buffer[0] == '%') // Other data (width, height, etc.)
+        {
+            
+            continue;
+        }
+       
+        buffer[strcspn(buffer, "#\0")] = 0;
         if (sscanf(buffer, "%d %d %d %d %s", &xrel, &yrel, &speedxrel, &speedyrel, color_str) > 0)
         {
             if (color_str[0] == '!') // Include
             {
-                int c;
-                for (c = 0; color_str[c+1]; c++) // Remove !
-                    include_filename[c] = color_str[c+1];
-                include_filename[c] = 0;
-                read_file(include_filename, x + xrel, y + yrel, speedx + speedxrel, speedy + speedyrel);
+                color_str++;
+                char* newdir = (char*) malloc(4096);
+                strcpy(newdir, directory);
+                strcat(newdir, getdirname(color_str));
+                read_file(newdir, getfilename(color_str), x + xrel, y + yrel, speedx + speedxrel, speedy + speedyrel);
             }
             else // Color
             {
@@ -76,7 +118,7 @@ int main(int argc, char** argv)
     SDL_Event event;
     bool will_quit = false;
     
-    read_file(argv[1], 0, 0, 0, 0);
+    read_file(getdirname(argv[1]), getfilename(argv[1]), 0, 0, 0, 0);
     
     int i = 0, last_printed = -1;
     while (!will_quit)

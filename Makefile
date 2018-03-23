@@ -1,5 +1,5 @@
 C=g++
-FLAGS=-std=c++11 -Wno-write-strings `pkg-config --libs --cflags sdl2`
+FLAGS=-std=c++11 `pkg-config --libs --cflags sdl2`
 
 default: all
 

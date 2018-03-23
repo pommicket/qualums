@@ -6,7 +6,7 @@
 
 unsigned Colors::colors[] = {0x888888, 0xFF0000, 0x0000FF, 0x00FF00,
                              0x660099, 0xFFFF00, 0x00FFFF, 0xFF8800};
-char* Colors::color_names[] = {"GA", "RE", "BL", "GE", "PU", "YE", "CY", "OR", NULL};
+const char* Colors::color_names[] = {"GA", "RE", "BL", "GE", "PU", "YE", "CY", "OR", NULL};
 
 Color Colors::read_color(char* s)
 {
