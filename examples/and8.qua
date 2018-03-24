@@ -1,0 +1,199 @@
+x   y   speedX speedY color
+## First pair
+1   0   0      0      PU
+1   -1  0      0      RE
+
+2   9   0      0      PU
+2   8   0      0      RE
+
+# Delay second bit
+2   17  0      0      CY
+2   18  0      0      CY
+2   19  0      0      CY
+2   20  0      0      CY
+2   21  0      0      CY
+2   22  0      0      CY
+2   23  0      0      CY
+2   24  0      0      CY
+
+# And, redirect output
+1   25  0      0      !and.qua
+1   30  0      0      GA
+2   30  0      0      CY
+
+## Second pair
+6   1   0      0      PU
+6   0   0      0      RE
+
+7   10  0      0      PU
+7   9   0      0      RE
+
+# Delay second bit
+7   17  0      0      CY
+7   18  0      0      CY
+7   19  0      0      CY
+7   20  0      0      CY
+7   21  0      0      CY
+7   22  0      0      CY
+7   23  0      0      CY
+7   24  0      0      CY
+
+# And, redirect output
+6   25  0      0      !and.qua
+6   31  0      0      GA
+7   31  0      0      CY
+
+## Third pair
+11  2   0      0      PU
+11  1   0      0      RE
+
+12  11  0      0      PU
+12  10  0      0      RE
+
+# Delay second bit
+12  17  0      0      CY
+12  18  0      0      CY
+12  19  0      0      CY
+12  20  0      0      CY
+12  21  0      0      CY
+12  22  0      0      CY
+12  23  0      0      CY
+12  24  0      0      CY
+
+# And, redirect output
+11  25  0      0      !and.qua
+11  32  0      0      GA
+12  32  0      0      CY
+
+
+## Fourth pair
+16  3   0      0      PU
+16  2   0      0      RE
+
+17  12  0      0      PU
+17  11  0      0      RE
+
+# Delay second bit
+17  17  0      0      CY
+17  18  0      0      CY
+17  19  0      0      CY
+17  20  0      0      CY
+17  21  0      0      CY
+17  22  0      0      CY
+17  23  0      0      CY
+17  24  0      0      CY
+
+# And, redirect output
+16  25  0      0      !and.qua
+16  33  0      0      GA
+17  33  0      0      CY
+
+## Fifth pair
+21  4   0      0      PU
+21  3   0      0      RE
+
+22  13  0      0      PU
+22  12  0      0      RE
+
+# Delay second bit
+22  17  0      0      CY
+22  18  0      0      CY
+22  19  0      0      CY
+22  20  0      0      CY
+22  21  0      0      CY
+22  22  0      0      CY
+22  23  0      0      CY
+22  24  0      0      CY
+
+# And, redirect output
+21  25  0      0      !and.qua
+21  34  0      0      GA
+22  34  0      0      CY
+
+
+## Sixth pair
+26  5   0      0      PU
+26  4   0      0      RE
+
+27  14  0      0      PU
+27  13  0      0      RE
+
+# Delay second bit
+27  17  0      0      CY
+27  18  0      0      CY
+27  19  0      0      CY
+27  20  0      0      CY
+27  21  0      0      CY
+27  22  0      0      CY
+27  23  0      0      CY
+27  24  0      0      CY
+
+# And, redirect output
+26  25  0      0      !and.qua
+26  35  0      0      GA
+27  35  0      0      CY
+
+
+## Seventh pair
+31  6   0      0      PU
+31  5   0      0      RE
+
+32  15  0      0      PU
+32  14  0      0      RE
+
+# Delay second bit
+32  17  0      0      CY
+32  18  0      0      CY
+32  19  0      0      CY
+32  20  0      0      CY
+32  21  0      0      CY
+32  22  0      0      CY
+32  23  0      0      CY
+32  24  0      0      CY
+
+# And, redirect output
+31  25  0      0      !and.qua
+31  36  0      0      GA
+32  36  0      0      CY
+
+
+## Eighth pair
+36  7   0      0      PU
+36  6   0      0      RE
+
+37  16  0      0      PU
+37  15  0      0      RE
+
+# Delay second bit
+37  17  0      0      CY
+37  18  0      0      CY
+37  19  0      0      CY
+37  20  0      0      CY
+37  21  0      0      CY
+37  22  0      0      CY
+37  23  0      0      CY
+37  24  0      0      CY
+
+# And, redirect output
+36  25  0      0      !and.qua
+36  37  0      0      GA
+37  37  0      0      CY
+
+
+# AND8
+# Inputs:  0, 0
+#          0, 1
+#          0, 2
+#          ...
+#          0, 7
+#          0, 9
+#          0, 10
+#          0, 11
+#          ...
+#          0, 16
+# Outputs: 37, 30
+#          37, 31
+#          37, 32
+#          ...
+#          37, 37
+# Time:    85
