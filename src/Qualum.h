@@ -19,7 +19,7 @@ public:
     static void initialize();
     static int iterations;
 private:
-    static int locations[Rendering::GRID_HEIGHT][Rendering::GRID_WIDTH];
+    static int** locations;
     static void two_perpendiculars(int speedx, int speedy, int* speedx1, int* speedy1, int* speedx2, int* speedy2);
     static void combine_speeds(int speedx1, int speedy1, int speedx2, int speedy2, int* speedx, int* speedy);
     void collide_with(Qualum* q);

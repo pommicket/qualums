@@ -17,4 +17,7 @@ x   y   speedX  speedY  color
 50  45  1      0       GE
 50  46  1      0       BL
 70  47  0      0       !add8.qua
+%WIDTH  400
+%HEIGHT 300
+%SCALE  2   
 # 11001101 (205) + 01011110 (94) = 100101011 (299)

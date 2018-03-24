@@ -5,14 +5,16 @@
 #include <vector>
 #include <iostream>
 
-int Qualum::locations[Rendering::GRID_HEIGHT][Rendering::GRID_WIDTH];
+int** Qualum::locations;
 std::vector<Qualum*> Qualum::qualums;
 int Qualum::iterations = 0;
 
 void Qualum::initialize()
 {
+    locations = (int**) malloc(Rendering::GRID_HEIGHT*sizeof(int*));
     for (int i = 0; i < Rendering::GRID_HEIGHT; i++)
     {
+        locations[i] = (int*) malloc(Rendering::GRID_WIDTH*sizeof(int));
         for (int j = 0; j < Rendering::GRID_WIDTH; j++)
         {
             locations[i][j] = -1;

@@ -14,7 +14,7 @@ const char SLASH = '/';
 
 SDL_Window* window;
 
-float TIME_SCALE = 4.0f;
+double TIME_SCALE = 4.0;
 
 void quit()
 {
@@ -53,6 +53,30 @@ char* getfilename(char* path)
     return filename;
 }
 
+void str_tolower(char* str)
+{
+    int i;
+    for (i = 0; str[i]; i++)
+        str[i] = tolower(str[i]);
+        
+}
+
+void set_property(const char* property, const char* value)
+{
+    int int_value;
+    double double_value;
+    if (!strcmp(property, "width") && (int_value = atoi(value)))
+        Rendering::set_grid_width(int_value);
+    else if (!strcmp(property, "height") && (int_value = atoi(value)))
+        Rendering::set_grid_height(int_value);
+    else if (!strcmp(property, "scale") && (int_value = atoi(value)))
+        Rendering::set_render_scale(int_value);
+    else if (!strcmp(property, "speed"))
+    {
+        TIME_SCALE = double_value;
+    }
+}
+
 void read_file(char* directory, char* filename, int x, int y, int speedx, int speedy)
 {
     // Create the qualums from the given file
@@ -71,13 +95,18 @@ void read_file(char* directory, char* filename, int x, int y, int speedx, int sp
     
     int xrel, yrel, speedxrel, speedyrel; // Read input file
     char* color_str = (char*) malloc(4096);
+    char* property  = (char*) malloc(4096);
+    char* value     = (char*) malloc(4096);
     
     while (fgets(buffer, 4096, input_file))
     {
         buffer += strspn(buffer, " \t"); // Remove whitespace at start
         if (buffer[0] == '%') // Other data (width, height, etc.)
         {
-            
+            buffer++;
+            sscanf(buffer, "%s %s", property, value);
+            str_tolower(property);
+            set_property(property, value);
             continue;
         }
        
@@ -109,7 +138,9 @@ int main(int argc, char** argv)
         return 1;
     }
     
+    read_file(getdirname(argv[1]), getfilename(argv[1]), 0, 0, 0, 0);
     Qualum::initialize();
+    
     window = SDL_CreateWindow("Qualums", SDL_WINDOWPOS_UNDEFINED,
         SDL_WINDOWPOS_UNDEFINED, Rendering::WIDTH, Rendering::HEIGHT,
         SDL_WINDOW_SHOWN);
@@ -118,7 +149,7 @@ int main(int argc, char** argv)
     SDL_Event event;
     bool will_quit = false;
     
-    read_file(getdirname(argv[1]), getfilename(argv[1]), 0, 0, 0, 0);
+    
     
     int i = 0, last_printed = -1;
     while (!will_quit)
@@ -144,7 +175,7 @@ int main(int argc, char** argv)
                 case SDL_KEYDOWN:
                     if (event.key.keysym.sym >= SDLK_0 && event.key.keysym.sym <= SDLK_9)
                     {
-                        TIME_SCALE = (float)(event.key.keysym.sym - SDLK_0);
+                        TIME_SCALE = (double)(event.key.keysym.sym - SDLK_0);
                         break;
                     }
                     switch (event.key.keysym.sym)

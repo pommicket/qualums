@@ -41,6 +41,13 @@ The qualum repository includes several example .qua files (including an 8-bit ad
 ./qualums add8test.qua
 ```
 You can change the numbers added in `add8test.qua` by editing the file.
+
+#### Keyboard shortcuts
+Escape - Quit  
+0 - Pause  
+1-9 - Sets the speed to 1-9x (the default is 4x)  
+Space - Advance one iteration  
+
 ### .qua files
 .qua files begin with a one-line header. **The first line of a .qua file is always ignored.** It can be helpful to add
 ```
@@ -77,6 +84,7 @@ x   y   speedX  speedY  color
 2   0   0       0       YE
 # A horizontal wall to stop qualums
 ```
+
 `anotherfile.qua`:
 ```
 x   y   speedX  speedY  color
@@ -84,3 +92,21 @@ x   y   speedX  speedY  color
 # Since speedX = 1, the wall will be moving to the right.
 41  20   0       1       GE # This qualum will move downwards and collide with the wall
 ```
+
+#### Modifying properties
+% is used to modify properties in .qua files. Here is a list of properties:
+- width - Controls the width of the screen in qualums
+- height - Controls the height of the screen in qualums
+- scale - Controls the size of qualums in pixels
+- speed - The initial program speed
+Property names are case insensitive.
+For example,
+```
+x y s s color
+0 0 0 1 RE
+0 2 0 0 YE
+%width 1
+%height 3
+%scale 1
+```
+This creates a 1x3 pixel window.
