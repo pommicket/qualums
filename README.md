@@ -95,10 +95,12 @@ x   y   speedX  speedY  color
 
 #### Modifying properties
 % is used to modify properties in .qua files. Here is a list of properties:
+
 - width - Controls the width of the screen in qualums
 - height - Controls the height of the screen in qualums
 - scale - Controls the size of qualums in pixels
 - speed - The initial program speed
+
 Property names are case insensitive.
 For example,
 ```
