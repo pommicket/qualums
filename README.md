@@ -1,5 +1,6 @@
 # Qualums
 ### About Qualums
+![XOR in Qualums](https://i.imgur.com/PBRGngZ.gif)  
 Qualums exist on a grid. Every qualum has a certain position, x speed, y speed, and color. At each iteration, every qualum moves to the right by its x speed, and downwards by its y speed. Qualums interact when they collide, i.e. when they both occupy the same grid square at once. It is possible for more than two qualums to collide at once, however the use of these collisions is discouraged, as the outcome will depend on the order in which the qualums were created. Here are the rules for qualum collision:
 1. If both qualums are red, they are both destroyed.
 2. If one qualum is red, it destroys the other one.
