@@ -94,7 +94,7 @@ x   y   speedX  speedY  color
 ```
 
 #### Modifying properties
-% is used to modify properties in .qua files. Here is a list of properties:
+`%` is used to modify properties in .qua files. Here is a list of properties:
 
 - width - Controls the width of the screen in qualums
 - height - Controls the height of the screen in qualums
@@ -112,3 +112,25 @@ x y s s color
 %scale 1
 ```
 This creates a 1x3 pixel window.
+
+#### Variables
+`%` can also be used to create variables. There are two types of variables: global and local. Global variables can be accessed by any file after they are defined. Local variables can only be accessed in the file they are defined in. Local variables must start with `.`. `$` is used to access a variable. For example,
+
+`a.qua`:
+```
+x y s s color
+%.color BL # This can only be accessed in a.qua
+%x 50 # This can be accessed in a.qua and b.qua
+$x 5 0 0 $.color
+0 0 0 0 !b.qua 
+```
+`b.qua`:
+```
+x y s s color
+# a.qua's .color cannot be accessed from here.
+# However, a local variable .color can also be created here.
+%.color GE
+$x 6 0 0 $.color # This will be green
+```
+
+You can also access properties' (width, etc.) values using `$`.

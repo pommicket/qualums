@@ -1,5 +1,10 @@
 #include <iostream>
 #include <vector>
+#include <map>
+#include <string>
+#include <sstream>
+#include <algorithm>
+#include <iterator>
 
 #include "SDL.h"
 #include "Qualum.h"
@@ -14,7 +19,9 @@ const char SLASH = '/';
 
 SDL_Window* window;
 
+int global_file_identifier = 0; // What the global file count is at (used for creating local variables)
 double TIME_SCALE = 4.0;
+std::map<std::string, std::string> variables;
 
 void quit()
 {
@@ -75,12 +82,29 @@ void set_property(const char* property, const char* value)
     {
         TIME_SCALE = double_value;
     }
+    variables.insert(std::make_pair<std::string,std::string>(std::string(property), std::string(value)));
+}
+
+const char* get_property(const char* property)
+{
+    try
+    {
+        return variables.at(property).c_str();
+    }
+    catch (...)
+    {
+        fprintf(stderr, "Variable not found: %s", property);
+        exit(1);
+    }
 }
 
 void read_file(char* directory, char* filename, int x, int y, int speedx, int speedy)
 {
     // Create the qualums from the given file
     // Increasing their positions by (x,y) and their speeds by (speedx, speedy)
+    
+    int file_identifier = global_file_identifier++; // Used for creating local variables
+    
     char* path = (char*)malloc(4096); // Full path to file
     sprintf(path, "%s%s", directory, filename);
     
@@ -104,34 +128,83 @@ void read_file(char* directory, char* filename, int x, int y, int speedx, int sp
         if (buffer[0] == '%') // Other data (width, height, etc.)
         {
             buffer++;
+            char* variable = (char*) malloc(4096);
             sscanf(buffer, "%s %s", property, value);
             str_tolower(property);
-            set_property(property, value);
+            if (property[0] == '.')
+            {
+                property++;
+                sprintf(variable, "%d %s", file_identifier, property);
+            }
+            else
+            {
+                strcpy(variable, property);
+            }
+            set_property(variable, value);
+            
             continue;
         }
        
         buffer[strcspn(buffer, "#\0")] = 0;
-        if (sscanf(buffer, "%d %d %d %d %s", &xrel, &yrel, &speedxrel, &speedyrel, color_str) > 0)
+        
+        std::string line(buffer);
+        std::istringstream iss(line);
+        std::vector<std::string> tokens{std::istream_iterator<std::string>(iss),
+                                        std::istream_iterator<std::string>()}; // Split line
+                      
+        int* int_ptrs[] = {&xrel, &yrel, &speedxrel, &speedyrel, NULL};
+        int index = 0;
+        for (std::string token: tokens)
         {
-            if (color_str[0] == '!') // Include
+            if (int_ptrs[index]) // Set integer values (x pos, y pos, x speed, y speed)
             {
-                color_str++;
-                char* newdir = (char*) malloc(4096);
-                strcpy(newdir, directory);
-                strcat(newdir, getdirname(color_str));
-                read_file(newdir, getfilename(color_str), x + xrel, y + yrel, speedx + speedxrel, speedy + speedyrel);
+                if (token[0] == '$')
+                {
+                    if (token[1] == '.') // Local
+                    {
+                        sprintf(property, "%d %s", file_identifier, token.c_str() + 2); // Create a variable with file-dependent name, e.g. ".foo" -> "1 foo"
+                    }
+                    else // Global
+                    {
+                        strcpy(property, token.c_str());
+                        property++;
+                    }
+                    str_tolower(property);
+                    *int_ptrs[index] = atoi(get_property(property));
+                }
+                else
+                {
+                    if (sscanf(token.c_str(), "%d", int_ptrs[index]) <= 0)
+                        continue;
+                }
             }
-            else // Color
+            else // Set color/include
             {
-                Color color = Colors::read_color(color_str);
-                Qualum::create_qualum(x + xrel, y + yrel, color, speedx + speedxrel, speedy + speedyrel);
+                strcpy(color_str, token.c_str()); 
+                if (color_str[0] == '!') // Include
+                {
+                    color_str++;
+                    char* newdir = (char*) malloc(4096);
+                    strcpy(newdir, directory);
+                    strcat(newdir, getdirname(color_str));
+                    read_file(newdir, getfilename(color_str), x + xrel, y + yrel, speedx + speedxrel, speedy + speedyrel);
+                }
+                else // Color
+                {
+                    Color color = Colors::read_color(color_str);
+                    Qualum::create_qualum(x + xrel, y + yrel, color, speedx + speedxrel, speedy + speedyrel);
+                }
             }
+            index++;
         }
+        
     }
 }
 
 int main(int argc, char** argv) 
 {
+    
+    
     if (argc < 2)
     {
         fprintf(stderr, "Error: No input file provided.\n");
